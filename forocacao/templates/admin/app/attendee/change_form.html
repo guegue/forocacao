@@ -1,21 +1,21 @@
 {% extends "admin/change_form.html" %}
 {% load i18n admin_urls %}
 {% block object-tools-items %}
-    <li>
-        <a href="{% url opts|admin_urlname:'history' original.pk|admin_urlquote %}" class="historylink">{% trans "History" %}</a>
-    </li>
+    <li><a href="{% url 'app:detail' username=original.username %}" class="btn-hight btn-danger">{% trans "Sheet" %}</a></li>
     <li>
     {% if perms.users.can_print_badge %}
-        <a href="{% url 'users:badge' username=original.username %}" class="historylink">{% trans "Badge" %}</a>
         {% if original.balance <= 0 %}
-            <a href="{% url 'app:receipt' username=original.username %}" class="historylink">{% trans "Receipt" %}</a>
+            <a href="{% url 'app:receipt' username=original.username %}" class="btn-hight btn-success">{% trans "Receipt" %}</a>
         {% endif %}
+        <a href="{% url 'users:badge' username=original.username %}" class="btn-hight btn-info">{% trans "Badge" %}</a>
     {% endif %}
-    <a href="{% url 'app:detail' username=original.username %}" class="historylink">{% trans "Sheet" %}</a>
     </li>
     {% if has_absolute_url %}
         <li>
             <a href="{% url 'admin:view_on_site' content_type_id original.pk %}" class="viewsitelink">{% trans "View on site" %}</a>
         </li>
     {% endif %}
+    <li>
+        <a href="{% url opts|admin_urlname:'history' original.pk|admin_urlquote %}" class="historylink">{% trans "History" %}</a>
+    </li>
 {% endblock %}
