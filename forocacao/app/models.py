@@ -231,7 +231,11 @@ class Attendee(User):
        return self.payments.aggregate(max=Max('date'))['max']
 
     def paid(self):
-       return self.payments.aggregate(sum=Sum('amount'))['sum']
+        paid = self.payments.aggregate(sum=Sum('amount'))['sum']
+        if not paid:
+            return 0
+        else:
+            return paid
     paid.short_description = _("Paid")
 
     def earlybird_price(self):
@@ -269,10 +273,13 @@ class Attendee(User):
         if not self.type or not self.event:
             return 'no type or event'
         try:
-            if self.earlybird():
-                price = self.earlybird_price()
+            if self.main:
+                if self.earlybird():
+                    price = self.earlybird_price()
+                else:
+                    price = self.regular_price()
             else:
-                price = self.regular_price()
+                price = 0
         except AttendeeTypeEvent.DoesNotExist:
             return 'wrong type'
         return price
@@ -282,7 +289,10 @@ class Attendee(User):
         if not self.type or not self.event:
             return 'no type or event'
         try:
-            price = self.event.attendeetypeevent_set.get(attendeetype=self.type).extra_price
+            if self.extra:
+                price = self.event.attendeetypeevent_set.get(attendeetype=self.type).extra_price
+            else:
+                price = 0
         except AttendeeTypeEvent.DoesNotExist:
             return 'wrong type'
         return price

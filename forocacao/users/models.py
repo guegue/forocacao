@@ -22,6 +22,7 @@ class User(AbstractUser):
     other_profession = models.CharField(max_length=250, verbose_name=_('Other Profession'),blank=True,null=True)
     phone = models.CharField(max_length=50, verbose_name=_('Phone'),blank=True,null=True)
     extra = models.BooleanField(verbose_name=_('Extra Activity'))
+    main = models.BooleanField(verbose_name=_('Main Activity'))
     country = CountryField(verbose_name=_('Country'))
     nationality = CountryField(verbose_name=_('Nationality'),blank=True,null=True)
     sponsored = models.BooleanField(verbose_name=_('Soponsored'))

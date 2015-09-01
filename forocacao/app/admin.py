@@ -98,7 +98,7 @@ class AttendeeAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': ('event','event_price','extra_price','total_price','paid','balance','type','first_name', 'last_name', 'email', 'profession', 'other_profession',
-            'phone','country','nationality','extra','sponsored','sponsor','photo')
+            'phone','country','nationality','extra','main','sponsored','sponsor','photo')
         }),
         ('Informacion de actividades y biografia', {
             'classes': ('collapse',),

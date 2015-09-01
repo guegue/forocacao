@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-01 01:13-0600\n"
+"POT-Creation-Date: 2015-09-01 01:28-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin.py:72 models.py:261
+#: admin.py:72 models.py:265
 msgid "Balance"
 msgstr "Saldo"
 
@@ -27,7 +27,7 @@ msgid "Event Management"
 msgstr "Manejo de Eventos"
 
 #: models.py:19 models.py:74 models.py:91 models.py:111 models.py:126
-#: models.py:148 models.py:191 models.py:313
+#: models.py:148 models.py:191 models.py:323
 msgid "Name"
 msgstr "Nombre"
 
@@ -208,7 +208,7 @@ msgstr "Forma de pago"
 msgid "Attendee Type"
 msgstr "Tipo de Participante"
 
-#: models.py:139 models.py:309
+#: models.py:139 models.py:319
 msgid "Price"
 msgstr "Precio"
 
@@ -344,19 +344,19 @@ msgstr "Gafetes"
 msgid "Attendees"
 msgstr "Participantes"
 
-#: models.py:235
+#: models.py:239
 msgid "Paid"
 msgstr "Abonado"
 
-#: models.py:279
+#: models.py:286
 msgid "Event Price"
 msgstr "Precio del Evento"
 
-#: models.py:289
+#: models.py:299
 msgid "Extra Price"
 msgstr "Precio Precongreso"
 
-#: models.py:293
+#: models.py:303
 msgid "Total Price"
 msgstr "Precio Total"
 

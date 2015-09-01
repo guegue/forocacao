@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 06:56-0600\n"
+"POT-Creation-Date: 2015-09-01 01:30-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,67 +38,75 @@ msgid "Profession"
 msgstr "Profesión"
 
 #: models.py:22
+msgid "Other Profession"
+msgstr "Otra Profesión"
+
+#: models.py:23
 msgid "Phone"
 msgstr "Teléfono"
 
-#: models.py:23
+#: models.py:24
 msgid "Extra Activity"
 msgstr "Precongreso"
 
-#: models.py:24
+#: models.py:25
+msgid "Main Activity"
+msgstr "Participación en Congreso"
+
+#: models.py:26
 msgid "Country"
 msgstr "País"
 
-#: models.py:25
+#: models.py:27
 msgid "Nationality"
 msgstr "Nacionalidad"
 
-#: models.py:26
+#: models.py:28
 msgid "Soponsored"
 msgstr "Patrocinado"
 
-#: models.py:27
+#: models.py:29
 msgid "Sponsor"
 msgstr "Patrocinador"
 
-#: models.py:31
+#: models.py:33
 msgid "Type"
 msgstr "Tipo"
 
-#: models.py:33
+#: models.py:35
 msgid "Photo"
 msgstr "Foto"
 
-#: models.py:35
+#: models.py:37
 msgid "Biography"
 msgstr "Biografía"
 
-#: models.py:37
+#: models.py:39
 msgid "Activity"
 msgstr "Actividad"
 
-#: models.py:40
+#: models.py:42
 msgid "Attendee"
 msgstr "Participante"
 
-#: models.py:41
+#: models.py:43
 msgid "Attendees"
 msgstr "Participantes"
 
-msgid "Name of User"
-msgstr "Nombre completo"
+#~ msgid "Name of User"
+#~ msgstr "Nombre completo"
 
-msgid "Age"
-msgstr "Edad"
+#~ msgid "Age"
+#~ msgstr "Edad"
 
-msgid "Document"
-msgstr "Documento"
+#~ msgid "Document"
+#~ msgstr "Documento"
 
-msgid "Speaker"
-msgstr "Ponente"
+#~ msgid "Speaker"
+#~ msgstr "Ponente"
 
-msgid "Oganizer"
-msgstr "Organizador"
+#~ msgid "Oganizer"
+#~ msgstr "Organizador"
 
-msgid "Special"
-msgstr "Especial"
+#~ msgid "Special"
+#~ msgstr "Especial"
