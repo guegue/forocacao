@@ -2,7 +2,8 @@
 .content {margin-top: 15px;}
 .clear { clear: both;}
 h1 { color: #000;font-size: 25px;}
-h3 { color: #006196;font-size: 18px;}
+h3 { color: #006196;font-size: 17px;}
 .separador2 { margin: 1em 0;  padding: 0;  }
 h2 { color: #999;font-size: 21px;}
 h4 { color: #242424;font-size: 15px;}
+.firma { margin-top:60px;text-align: center; border-top: 1px solid #000; width: 60%}

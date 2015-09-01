@@ -24,14 +24,20 @@
       <p>{{ object.name }}</p>
     {% endif %}
     <div class="separador2"></div>
-    <div class="contenido col-md-7">  
-        <table class="table table-striped">
+    <div class="contenido col-md-9">  
+        <table class="table table-condensed">
+            <tr><td colspan="2" class="active"><h3>Información general</h3></td><tr>
             <tr><td>Nombre: </td><td><h4>{{ object.first_name }} {{ object.last_name }}</h4></td>
-            <tr><td>Profesión: </td><td>{{ object.profession }}</td></tr>
             <tr><td>Tipo de inscripción:</td><td> {{ object.type }}</td></tr>
+            <tr><td>Fecha de inscripción:</td><td> {{ object.date_joined }}</td></tr>
+            <tr><td>Profesión: </td><td>{{ object.profession }}</td></tr>
             <tr><td>País:</td><td> {{ object.country.name }}</td></tr>
-            <tr><td>Nacionalidad:</td><td> {{ object.nationality.name }}</td></tr>
-            <tr><td>Teléfono:</td><td> {{ object.phone }}</td></tr>
+            {%if  object.nationality.name %}
+                <tr><td>Nacionalidad:</td><td> {{ object.nationality.name }}</td></tr>
+            {% endif %}
+            {%if  object.phone %}
+                <tr><td>Teléfono:</td><td> {{ object.phone }}</td></tr>
+            {% endif %}
             <tr><td>Correo:</td><td> {{ object.email }}</td></tr>
             <tr><td>Patrocinado:</td><td> {% if object.sponsored %}Si{% else %}No{% endif %}</td></tr>
             {%if object.sponsored %}
@@ -40,7 +46,7 @@
                 </td></tr>
             {% endif %}
             {% if object.activities.all %}
-                <tr><td colspan="2"><h4>{{ object.event.activities_label }}:</h4></td></tr>
+                <tr><td colspan="2" class="active"><h3>{{ object.event.activities_label }}</h3></td></tr>
                 <tr><td colspan="2">
                     <ul>    
                         {% for row in object.activities.all %}
@@ -49,8 +55,11 @@
                     </ul>
                 </td></tr>
             {% endif %}
-            <tr><td colspan="2"><h4>Pagos:</h4></td><tr>
+            <tr><td colspan="2" class="active"><h3>Información de pago</h3></td><tr>
+            {% if object.balance == 0 %}<tr><td>Fecha de cancelación:</td><td>{{object.payments.last.date}}</td></tr>{% endif %}
+            {% if object.balance == 0 %}<tr><td>Total cancelado:</td><td>{{object.paid}}</td></tr>{% endif %}
             <tr><td colspan="2">
+            <tr><td>Pagos realizados:</td><td> 
                 {% if object.payments.all %}
                     <ul>
                         {% for row in object.payments.all %}
@@ -62,6 +71,8 @@
                 {% endif %}
             </td></tr>
         </table>
+        <div class="separador2"></div>
+        <div class="col-md-12"><div class="firma">Firma del participante</div></div>
         {% if object.photo %}
         <!-- <img src="{% thumbnail object.photo 250x250 crop %}" /> -->
         {% endif %}
