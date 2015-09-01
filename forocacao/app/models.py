@@ -159,7 +159,7 @@ class AttendeeType(models.Model):
 class AttendeeReceipt(models.Model):
     attendee = models.OneToOneField('Attendee', verbose_name=_('Attendee'), related_name='receipt')
     date = models.DateField(verbose_name=_('Date'))
-    reference = models.CharField(max_length=20, verbose_name=_('Reference'))
+    reference = models.CharField(max_length=20, verbose_name=_('Reference'), null=True, blank=True)
     note = models.CharField(max_length=200, null=True, blank=True, verbose_name=_('Note'))
 
     class Meta:
