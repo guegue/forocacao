@@ -25,7 +25,7 @@
     {% endif %}
     <div class="separador2"></div>
     <div class="contenido col-md-9">  
-        <table class="table table-condensed">
+        <table class="table condensed">
             <tr><td colspan="2" class="active"><h3>Información general</h3></td><tr>
             <tr><td>Nombre: </td><td><h4>{{ object.first_name }} {{ object.last_name }}</h4></td>
             <tr><td>Tipo de inscripción:</td><td> {{ object.type }}</td></tr>
@@ -45,6 +45,7 @@
                   <p>Patrocinador: {{ object.sponsor }}</p>
                 </td></tr>
             {% endif %}
+            {% comment %}
             {% if object.activities.all %}
                 <tr><td colspan="2" class="active"><h3>{{ object.event.activities_label }}</h3></td></tr>
                 <tr><td colspan="2">
@@ -55,6 +56,7 @@
                     </ul>
                 </td></tr>
             {% endif %}
+            {% endcomment %}
             <tr><td colspan="2" class="active"><h3>Información de pago</h3></td><tr>
             {% if object.balance == 0 %}<tr><td>Fecha de cancelación:</td><td>{{object.payments.last.date}}</td></tr>{% endif %}
             {% if object.balance == 0 %}<tr><td>Total cancelado:</td><td>{{object.paid}}</td></tr>{% endif %}
