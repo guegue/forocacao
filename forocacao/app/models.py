@@ -149,7 +149,7 @@ class AttendeeType(models.Model):
     name = models.CharField(max_length=50, verbose_name=_('Name'))
 
     class Meta:
-        ordering = ['name']
+        ordering = ['id']
         verbose_name = _("Attendee Type")
         verbose_name_plural = _("Attendee Types")
 
