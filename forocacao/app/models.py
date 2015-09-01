@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, absolute_import
+from datetime import date
 
 from django.db import models
 from django.db.models import Sum, Max
@@ -267,6 +268,8 @@ class Attendee(User):
     def earlybird(self):
             if not self.event.eb_end:
                 raise NameError('Event has no eb_end date')
+            if not self.latest_payment():
+                return date.today() <= self.event.eb_end
             return self.paid() >= self.earlybird_price() and self.latest_payment() <= self.event.eb_end
 
     def event_price(self):
@@ -307,10 +310,13 @@ class Attendee(User):
         if not self.type or not self.event:
             return 'no type or event'
         try:
-            if self.earlybird():
-                price = self.earlybird_price()
+            if self.main:
+                if self.earlybird():
+                    price = self.earlybird_price()
+                else:
+                    price = self.regular_price()
             else:
-                price = self.regular_price()
+                price = 0
             if self.extra:
                 price += self.event.attendeetypeevent_set.get(attendeetype=self.type).extra_price
         except AttendeeTypeEvent.DoesNotExist:
