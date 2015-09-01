@@ -232,14 +232,13 @@ class Attendee(User):
 
     def paid(self):
        return self.payments.aggregate(sum=Sum('amount'))['sum']
+    paid.short_description = _("Paid")
 
     def earlybird_price(self):
         if not self.type or not self.event:
             return 'no type or event'
         try:
             price = self.event.attendeetypeevent_set.get(attendeetype=self.type).eb_price
-            if self.extra:
-                price += self.event.attendeetypeevent_set.get(attendeetype=self.type).extra_price
         except AttendeeTypeEvent.DoesNotExist:
             return 'wrong type'
         return price
@@ -249,8 +248,6 @@ class Attendee(User):
             return 'no type or event'
         try:
             price = self.event.attendeetypeevent_set.get(attendeetype=self.type).price
-            if self.extra:
-                price += self.event.attendeetypeevent_set.get(attendeetype=self.type).extra_price
         except AttendeeTypeEvent.DoesNotExist:
             return 'wrong type'
         return price
@@ -268,7 +265,7 @@ class Attendee(User):
                 raise NameError('Event has no eb_end date')
             return self.paid() >= self.earlybird_price() and self.latest_payment() <= self.event.eb_end
 
-    def price(self):
+    def event_price(self):
         if not self.type or not self.event:
             return 'no type or event'
         try:
@@ -276,8 +273,36 @@ class Attendee(User):
                 price = self.earlybird_price()
             else:
                 price = self.regular_price()
-            #if self.extra:
-            #    price += self.event.attendeetypeevent_set.get(attendeetype=self.type).extra_price
+        except AttendeeTypeEvent.DoesNotExist:
+            return 'wrong type'
+        return price
+    event_price.short_description = _("Event Price")
+
+    def extra_price(self):
+        if not self.type or not self.event:
+            return 'no type or event'
+        try:
+            price = self.event.attendeetypeevent_set.get(attendeetype=self.type).extra_price
+        except AttendeeTypeEvent.DoesNotExist:
+            return 'wrong type'
+        return price
+    extra_price.short_description = _("Extra Price")
+
+    def total_price(self):
+        return self.event_price() + self.extra_price()
+    total_price.short_description = _("Total Price")
+
+    def price(self):
+        # return event_price + extra_price
+        if not self.type or not self.event:
+            return 'no type or event'
+        try:
+            if self.earlybird():
+                price = self.earlybird_price()
+            else:
+                price = self.regular_price()
+            if self.extra:
+                price += self.event.attendeetypeevent_set.get(attendeetype=self.type).extra_price
         except AttendeeTypeEvent.DoesNotExist:
             return 'wrong type'
         return price

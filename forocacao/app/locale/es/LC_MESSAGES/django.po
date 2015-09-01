@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 17:44-0600\n"
+"POT-Creation-Date: 2015-09-01 01:13-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin.py:72 models.py:264
+#: admin.py:72 models.py:261
 msgid "Balance"
 msgstr "Saldo"
 
@@ -27,7 +27,7 @@ msgid "Event Management"
 msgstr "Manejo de Eventos"
 
 #: models.py:19 models.py:74 models.py:91 models.py:111 models.py:126
-#: models.py:148 models.py:191 models.py:288
+#: models.py:148 models.py:191 models.py:313
 msgid "Name"
 msgstr "Nombre"
 
@@ -103,10 +103,6 @@ msgstr "Fin"
 msgid "Proffesions"
 msgstr "Profesiones"
 
-#: models.py:39
-msgid "Other Profession"
-msgstr "Otra Profesión"
-
 #: models.py:39 models.py:131
 msgid "Payment Methods"
 msgstr "Formas de pago"
@@ -138,17 +134,15 @@ msgstr "Documento"
 
 #: models.py:56
 msgid "Telephone"
-msgstr ""
+msgstr "Teléfono"
 
 #: models.py:57
-#, fuzzy
-#| msgid "Organizer"
 msgid "Organization"
-msgstr "Organizador"
+msgstr "Organización"
 
 #: models.py:57
 msgid "Position"
-msgstr ""
+msgstr "Cargo"
 
 #: models.py:58 models.py:119 models.py:205
 msgid "Profession"
@@ -160,37 +154,35 @@ msgstr "País"
 
 #: models.py:76
 msgid "About"
-msgstr ""
+msgstr "Acerca de..."
 
 #: models.py:76
 msgid "Contact"
-msgstr ""
+msgstr "Contacto"
 
 #: models.py:76
-#, fuzzy
-#| msgid "Event description"
 msgid "Main description"
 msgstr "Descripción del evento"
 
 #: models.py:76
 msgid "Footer"
-msgstr ""
+msgstr "Pié de página"
 
 #: models.py:76
 msgid "Services"
-msgstr ""
+msgstr "Servicios"
 
 #: models.py:76
 msgid "Not Found"
-msgstr ""
+msgstr "No encontrado"
 
 #: models.py:82
 msgid "Content"
-msgstr ""
+msgstr "Contenido"
 
 #: models.py:83
 msgid "Contents"
-msgstr ""
+msgstr "Contenidos"
 
 #: models.py:95
 msgid "Activity description"
@@ -216,7 +208,7 @@ msgstr "Forma de pago"
 msgid "Attendee Type"
 msgstr "Tipo de Participante"
 
-#: models.py:139 models.py:284
+#: models.py:139 models.py:309
 msgid "Price"
 msgstr "Precio"
 
@@ -351,6 +343,25 @@ msgstr "Gafetes"
 #: models.py:227
 msgid "Attendees"
 msgstr "Participantes"
+
+#: models.py:235
+msgid "Paid"
+msgstr "Abonado"
+
+#: models.py:279
+msgid "Event Price"
+msgstr "Precio del Evento"
+
+#: models.py:289
+msgid "Extra Price"
+msgstr "Precio Precongreso"
+
+#: models.py:293
+msgid "Total Price"
+msgstr "Precio Total"
+
+msgid "Other Profession"
+msgstr "Otra Profesión"
 
 msgid "Receipt"
 msgstr "Recibo"

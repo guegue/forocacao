@@ -80,6 +80,7 @@ class AttendeePaymentAdmin(admin.ModelAdmin):
 class AttendeeAdmin(admin.ModelAdmin):
 
     list_display = ['id','first_name','last_name','email','profession','balance']
+    readonly_fields = ('balance', 'event_price', 'extra_price', 'total_price', 'paid')
 
     def my_url_field(self, obj):
         return '<a href="%s%s">%s</a>' % ('http://url-to-prepend.com/', obj.url_field, obj.url_field)
@@ -93,9 +94,10 @@ class AttendeeAdmin(admin.ModelAdmin):
         AttendeePaymentInline,
     ]
 
+
     fieldsets = (
         (None, {
-            'fields': ('event','type','first_name', 'last_name', 'email', 'profession', 'other_profession',
+            'fields': ('event','event_price','extra_price','total_price','paid','balance','type','first_name', 'last_name', 'email', 'profession', 'other_profession',
             'phone','country','nationality','extra','sponsored','sponsor','photo')
         }),
         ('Informacion de actividades y biografia', {
