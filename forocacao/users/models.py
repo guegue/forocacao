@@ -24,7 +24,7 @@ class User(AbstractUser):
     extra = models.BooleanField(verbose_name=_('Extra Activity'))
     main = models.BooleanField(verbose_name=_('Main Activity'))
     country = CountryField(verbose_name=_('Country'))
-    nationality = CountryField(verbose_name=_('Nationality'),blank=True,null=True)
+    #nationality = CountryField(verbose_name=_('Nationality'),blank=True,null=True)
     sponsored = models.BooleanField(verbose_name=_('Soponsored'))
     sponsor = models.ForeignKey('User', limit_choices_to = {'type': 3}, null=True, blank=True, verbose_name=_('Sponsor'))
     #document = models.CharField(max_length=50, null=True, blank=True, verbose_name=_('Document'))

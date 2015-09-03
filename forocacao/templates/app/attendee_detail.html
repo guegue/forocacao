@@ -35,9 +35,6 @@
             <tr><td>Fecha de inscripción:</td><td> {{ object.date_joined }}</td></tr>
             <tr><td>Profesión: </td><td>{{ object.profession }}</td></tr>
             <tr><td>País:</td><td> {{ object.country.name }}</td></tr>
-            {%if  object.nationality.name %}
-                <tr><td>Nacionalidad:</td><td> {{ object.nationality.name }}</td></tr>
-            {% endif %}
             {%if  object.phone %}
                 <tr><td>Teléfono:</td><td> {{ object.phone }}</td></tr>
             {% endif %}
