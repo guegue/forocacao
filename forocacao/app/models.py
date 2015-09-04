@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, absolute_import
-from datetime import date
+from datetime import date, datetime
 
 from django.db import models
 from django.db.models import Sum, Max
@@ -174,7 +174,7 @@ class AttendeeReceipt(models.Model):
 class AttendeePayment(models.Model):
     attendee = models.ForeignKey('users.User', verbose_name=_('Attendee'), related_name='payments')
     payment_method = models.ForeignKey('PaymentMethod', verbose_name=_('Payment Method'))
-    date = models.DateField(verbose_name=_('Date'))
+    date = models.DateField(default=date.today, verbose_name=_('Date'))
     amount = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=_('Amount'))
     reference = models.CharField(max_length=20, verbose_name=_('Reference'))
     note = models.CharField(max_length=200, null=True, blank=True, verbose_name=_('Note'))
