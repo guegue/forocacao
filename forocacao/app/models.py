@@ -245,7 +245,7 @@ class Attendee(User):
         try:
             price = self.event.attendeetypeevent_set.get(attendeetype=self.type).eb_price
         except AttendeeTypeEvent.DoesNotExist:
-            return 'wrong type'
+            return 0
         return price
 
     def regular_price(self):
@@ -254,7 +254,7 @@ class Attendee(User):
         try:
             price = self.event.attendeetypeevent_set.get(attendeetype=self.type).price
         except AttendeeTypeEvent.DoesNotExist:
-            return 'wrong type'
+            return 0
         return price
 
     def balance(self):
@@ -274,7 +274,7 @@ class Attendee(User):
 
     def event_price(self):
         if not self.type or not self.event:
-            return 'no type or event'
+            return 0
         try:
             if self.main:
                 if self.earlybird():
@@ -284,7 +284,7 @@ class Attendee(User):
             else:
                 price = 0
         except AttendeeTypeEvent.DoesNotExist:
-            return 'wrong type'
+            return 0
         return price
     event_price.short_description = _("Event Price")
 
@@ -297,7 +297,7 @@ class Attendee(User):
             else:
                 price = 0
         except AttendeeTypeEvent.DoesNotExist:
-            return 'wrong type'
+            return 0
         return price
     extra_price.short_description = _("Extra Price")
 
@@ -320,7 +320,7 @@ class Attendee(User):
             if self.extra:
                 price += self.event.attendeetypeevent_set.get(attendeetype=self.type).extra_price
         except AttendeeTypeEvent.DoesNotExist:
-            return 'wrong type'
+            return 0
         return price
     price.short_description = _("Price")
 

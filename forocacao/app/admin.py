@@ -124,7 +124,7 @@ class AttendeeAdmin(admin.ModelAdmin):
         # required fields (not required in original model)
         form.base_fields['first_name'].required = True
         form.base_fields['last_name'].required = True
-        form.base_fields['email'].required = True
+        form.base_fields['email'].required = False
         form.base_fields['password'].required = False
         form.base_fields['username'].required = False
 
@@ -147,7 +147,10 @@ class AttendeeAdmin(admin.ModelAdmin):
         return form
 
     def save_model(self, request, obj, form, change):
-        obj.username = obj.email
+        if obj.email:
+            obj.username = obj.email
+        else:
+            obj.username = obj.id
         obj.save()
 
 
