@@ -9,6 +9,8 @@ from django.conf import settings
 from braces.views import LoginRequiredMixin
 
 from .models import Event, Activity, Attendee, AttendeeReceipt, Content
+# FIXME: maybe move badge code here?
+from forocacao.users.views import UserBadgeJPEG
 
 class HomeView(DetailView):
 
@@ -30,6 +32,7 @@ class ContentView(DetailView):
     def get_object(self):
         return self.model.objects.get(event__slug=self.kwargs['slug'], page=self.page)
 
+
 class AttendeeReceiptView(LoginRequiredMixin, DetailView):
     model = AttendeeReceipt
 
@@ -45,6 +48,16 @@ class AttendeeReceiptView(LoginRequiredMixin, DetailView):
             new_receipt = AttendeeReceipt(attendee=attendee, date=date.today())
             new_receipt.save()
             return new_receipt
+
+
+class AttendeeJPEGView(UserBadgeJPEG):
+    pass
+
+class AttendeeBadgeView(LoginRequiredMixin, DetailView):
+    model = Attendee
+    slug_field = "username"
+    slug_url_kwarg = "username"
+    template_name = "app/attendee_badge.html"
 
 
 class AttendeeDetailView(LoginRequiredMixin, DetailView):

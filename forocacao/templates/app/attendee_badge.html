@@ -1,0 +1,39 @@
+{% extends "base_print.html" %}
+{% load static %}
+{% load thumbnail %}
+
+{% block title %}{{ object.event }}{% endblock %}
+
+{% block content %}
+<div class="col-md-12">
+    <div class="pull-right">
+        <input type="button" onclick="printDiv('printableArea')" value="Imprimir" class="btn btn-primary"/>
+        <a href="/admin/app/attendee/{{ object.id }}" class="btn btn-info">Regresar a la ficha del participante</a>
+    </div>
+</div>
+<div class="container internal"  id="printableArea">
+  <div class="row">
+    <div class="col-sm-8">
+        <img src="{% url 'users:jpeg' object.username %}" style="float:left;" />
+     </div>
+  </div>
+</div>
+
+{% if object == request.user %}
+<!-- Action buttons -->
+<div class="row">
+
+  <div class="col-sm-12 ">
+    <a class="btn btn-primary" href="{% url 'users:update' %}">My Profile</a>
+    <a class="btn btn-primary" href="{% url 'account_email' %}">E-Mail</a>
+    <!-- Your Stuff: Custom user template urls -->
+  </div>
+
+</div>
+<!-- End Action buttons -->
+{% endif %}
+
+
+</div>
+{% endblock content %}
+

@@ -14,7 +14,7 @@ from easy_thumbnails.files import get_thumbnailer
 from .models import User
 
 
-class UserBadgeView(LoginRequiredMixin, DetailView):
+class UserBadgeJPEG(LoginRequiredMixin, DetailView):
     model = User
     slug_field = "username"
     slug_url_kwarg = "username"
@@ -61,6 +61,15 @@ class UserBadgeView(LoginRequiredMixin, DetailView):
         response = HttpResponse(content_type="image/png")
         img.save(response, "PNG")
         return HttpResponse(response, content_type="image/png")
+
+class UserBadgeView(LoginRequiredMixin, DetailView):
+    model = User
+    # These next two lines tell the view to index lookups by username
+    slug_field = "username"
+    slug_url_kwarg = "username"
+
+    template_name = 'users/user_badge.html'
+
 
 class UserDetailView(LoginRequiredMixin, DetailView):
     model = User

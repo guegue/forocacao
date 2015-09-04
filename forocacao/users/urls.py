@@ -27,6 +27,13 @@ urlpatterns = [
         name='detail'
     ),
 
+    # URL pattern for the UserBadgeJPEG
+    url(
+        regex=r'^(?P<username>[\w.@+-]+)/jpeg/$',
+        view=views.UserBadgeJPEG.as_view(),
+        name='jpeg'
+    ),
+
     # URL pattern for the UserBadgeView
     url(
         regex=r'^(?P<username>[\w.@+-]+)/badge/$',

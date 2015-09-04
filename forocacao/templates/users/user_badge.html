@@ -1,0 +1,31 @@
+{% extends "base_print.html" %}
+{% load static %}
+{% load thumbnail %}
+
+{% block title %}User: {{ object.username }}{% endblock %}
+
+{% block content %}
+<div class="container internal">
+  <div class="row">
+    <div class="col-sm-12">
+        <img src="{% url 'users:jpeg' object.username %}" style="float:left;" />
+    </div>
+  </div>
+
+{% if object == request.user %}
+<!-- Action buttons -->
+<div class="row">
+
+  <div class="col-sm-12 ">
+    <a class="btn btn-primary" href="{% url 'users:update' %}">My Profile</a>
+    <a class="btn btn-primary" href="{% url 'account_email' %}">E-Mail</a>
+    <!-- Your Stuff: Custom user template urls -->
+  </div>
+
+</div>
+<!-- End Action buttons -->
+{% endif %}
+
+
+</div>
+{% endblock content %}
