@@ -272,6 +272,19 @@ class Attendee(User):
                 return date.today() <= self.event.eb_end
             return self.paid() >= self.earlybird_price() and self.latest_payment() <= self.event.eb_end
 
+    def event_price_(self):
+        price = self.event_price()
+        if not self.type or not self.event:
+            return 0
+        try:
+            if self.main:
+                if self.earlybird():
+                    price = "%s %s" % (price, '(*) Temprano')
+        except AttendeeTypeEvent.DoesNotExist:
+            return 0
+        return price
+    event_price_.short_description = _("Event Price")
+
     def event_price(self):
         if not self.type or not self.event:
             return 0
