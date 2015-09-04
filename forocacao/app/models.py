@@ -279,7 +279,7 @@ class Attendee(User):
         try:
             if self.main:
                 if self.earlybird():
-                    price = "%s %s" % (price, '(*) Temprano')
+                    price = "%s %s" % (price, '(*) Anticipado')
         except AttendeeTypeEvent.DoesNotExist:
             return 0
         return price
