@@ -10,7 +10,7 @@
         {% if original.balance <= 0 %}
             <a href="{% url 'app:receipt' username=original.username %}" class="btn-hight btn-success enlaces">{% trans "Receipt" %}</a>
         {% endif %}
-        <a href="{% url 'users:badge' username=original.username %}" class="btn-hight btn-info enlaces">{% trans "Badge" %}</a>
+        <a href="{% url 'app:badge' username=original.username %}" class="btn-hight btn-info enlaces">{% trans "Badge" %}</a>
     {% endif %}
     </li>
     {% if has_absolute_url %}
