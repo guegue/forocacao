@@ -33,6 +33,7 @@ class User(AbstractUser):
     type = models.ForeignKey('app.AttendeeType', verbose_name=_('Type'))
     #payment_method = models.ForeignKey('app.PaymentMethod', null=True, verbose_name=_('Payment Method'))
     photo = models.ImageField(null=True, blank=True, verbose_name=_('Photo'))
+    printed = models.BooleanField(default=False, verbose_name=_('Impreso'))
     text = models.TextField(blank=True,
                                  verbose_name=_('Biography'),
                                  help_text='Try and enter few some more lines')
