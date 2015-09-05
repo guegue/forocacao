@@ -5,9 +5,15 @@
 {% block title %}{{ object.event }}{% endblock %}
 
 {% block content %}
+<script>
+function markTrue(field) {
+    //$.get( "attendee/" + "{{ object.username }}" + "/markTrue/" + field, { username: {{ object.username}}, field: field } );
+    $.get( "/attendee/" + "{{ object.username }}" + "/markTrue/" + field );
+}
+</script>
 <div class="col-md-12">
     <div class="pull-right">
-        <input type="button" onclick="printDiv('printableArea')" value="Imprimir" class="btn btn-primary"/>
+        <input type="button" onclick="printDiv('printableArea'); markTrue('printed')" value="Imprimir" class="btn btn-primary"/>
         <a href="/admin/app/attendee/{{ object.id }}" class="btn btn-info">Regresar a la ficha del participante</a>
     </div>
 </div>

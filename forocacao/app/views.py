@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
 from braces.views import LoginRequiredMixin
 
@@ -32,6 +33,14 @@ class ContentView(DetailView):
     def get_object(self):
         return self.model.objects.get(event__slug=self.kwargs['slug'], page=self.page)
 
+
+@login_required
+def AttendeeMarkTrue(request, username, field):
+    attendee = Attendee.objects.get(username=username)
+    # FIXME: debería aceptar otros campos (usar 'field')
+    attendee.printed = True
+    attendee.save()
+    return HttpResponse(True)
 
 class AttendeeReceiptView(LoginRequiredMixin, DetailView):
     model = AttendeeReceipt
