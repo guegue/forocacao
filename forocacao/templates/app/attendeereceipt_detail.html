@@ -24,21 +24,23 @@
       <div class="col-md-6">
         <div class="pull-right">Fecha: {{ object.date }}</div>
       </div>
-      <br clear="both">
-      <hr/>
+      <br clear="all" />
       <div class="contanido">
-          <p>Recibimos de: {{ object.attendee.full_name }}</p>
-          <p>La cantidad de: ${{ object.attendee.price }}</p>
-          <p>En concepto de: Cancelación de participación en {{ object.attendee.event }}</p>
-          {% if object.name %}
-            <p>{{ object.name }}</p>
-          {% endif %}
-            <p>Detalle de pagos realizados:</p>
-            <ul>
+	  <table class="table table-striped" width="75%">
+              <tr><td colspan=2 class="text-right">Recibo #: </td><td>{{ object.id }}</td></tr>
+              <tr><td>Recibimos de: </td><td>{{ object.attendee.full_name }} participante #{{ object.attendee.id }}</td></tr>
+              <tr><td nowrap>La cantidad de: </td><td>${{ object.attendee.price }}</td></tr>
+              <tr><td nowrap>En concepto de:</td><td>Cancelación por {% if object.attendee.main %}asistencia al congreso {% endif %} {% if object.attendee.main and object.attendee.extra%} y {% endif %}{% if object.attendee.extra%}asistencia al precongreso{% endif %} "{{ object.attendee.event }}" y participación como "{{ object.attendee.type}}"</td></tr>
+              {% if object.name %}<tr><td>{{ object.name }}</td></tr>{% endif %}
+              <tr><td colspan=2 class="text-left">Detalle de pagos realizados:</td></tr>
+	      <tr><td colspan=2">
+            	<ul>
                 {% for row in object.attendee.payments.all %}
                 <li>{{ row.date }}: {{ row.payment_method }}: {{ row.amount}} {% if row.note %}{{ row.note }}{% endif %}</li>
                 {% endfor %}
-             </ul>
+                </ul>
+	      </td></tr>
+         </table>
        </div>
        <div style="margin-top: 120px;"></div>
        <div class="col-md-3" style="border-top: 1px solid #000;margin-right:80px;">Recibi conforme</div>
