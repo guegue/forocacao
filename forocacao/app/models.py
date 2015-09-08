@@ -37,6 +37,7 @@ class Event(models.Model):
     end = models.DateField(blank=True, null=True, verbose_name=_('End'))
     types = models.ManyToManyField('AttendeeType', through='AttendeeTypeEvent')
     professions = models.ManyToManyField('Profession', verbose_name=_('Proffesions'))
+    sponsors = models.ManyToManyField('Sponsor', verbose_name=_('Sponsors'))
     payment_methods = models.ManyToManyField('PaymentMethod', verbose_name=_('Payment Methods'))
     badge_size_x = models.IntegerField(null=True, blank=True, verbose_name=_('Badge size X'))
     badge_size_y = models.IntegerField(null=True, blank=True, verbose_name=_('Badge size Y'))
@@ -104,6 +105,17 @@ class Activity(models.Model):
         ordering = ['name']
         verbose_name = _("Activity")
         verbose_name_plural = _("Activities")
+
+    def __unicode__(self):
+        return self.name
+
+class Sponsor(models.Model):
+    name = models.CharField(max_length=200, verbose_name=_('Name'))
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = _("Sponsor")
+        verbose_name_plural = _("Sponsors")
 
     def __unicode__(self):
         return self.name

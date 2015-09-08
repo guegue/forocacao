@@ -1,10 +1,11 @@
 from django.contrib import admin
 from django import forms
 from django.utils.translation import ugettext as _
+from django.utils.text import slugify
 
 from suit_redactor.widgets import RedactorWidget
 
-from .models import Event, Activity, Profession, Attendee, AttendeeType, AttendeePayment, PaymentMethod, EventBadge, Font, AttendeeReceipt, Content, Field
+from .models import Event, Activity, Profession, Attendee, AttendeeType, AttendeePayment, PaymentMethod, EventBadge, Font, AttendeeReceipt, Content, Field, Sponsor
 
 def has_approval_permission(request, obj=None):
     if request.user.has_perm('users.can_approve_participant'):
@@ -131,12 +132,14 @@ class AttendeeAdmin(admin.ModelAdmin):
         # if update, limit type and profession to current event
         if obj:
             form.base_fields['profession'].queryset = Profession.objects.filter(id__in=obj.event.professions.all())
+            form.base_fields['sponsor'].queryset = Sponsor.objects.filter(id__in=obj.event.sponsors.all())
             form.base_fields['activities'].queryset = Activity.objects.filter(id__in=obj.event.activities.all())
             form.base_fields['type'].queryset = AttendeeType.objects.filter(id__in=obj.event.types.all())
 
         # if not superuser, limit type and profession to user's event
         if not request.user.is_superuser:
             form.base_fields['profession'].queryset = Profession.objects.filter(id__in=request.user.event.professions.all())
+            form.base_fields['sponsor'].queryset = Sponsor.objects.filter(id__in=request.user.event.sponsors.all())
             form.base_fields['activities'].queryset = Activity.objects.filter(id__in=request.user.event.activities.all())
             form.base_fields['type'].queryset = AttendeeType.objects.filter(id__in=request.user.event.types.all())
             form.base_fields['event'].initial = request.user.event
@@ -147,10 +150,13 @@ class AttendeeAdmin(admin.ModelAdmin):
         return form
 
     def save_model(self, request, obj, form, change):
-        if obj.email:
-            obj.username = obj.email
-        else:
-            obj.username = obj.id
+        if not obj.username:
+            if obj.email:
+                obj.username = obj.email
+            elif obj.id:
+                obj.username = obj.id
+            else:
+                obj.username = slugify(obj.first_name + obj.date_joined.strftime('%y%m%d%H%M'))
         obj.save()
 
 
@@ -158,6 +164,7 @@ class AttendeeAdmin(admin.ModelAdmin):
 admin.site.register(Event, EventAdmin)
 admin.site.register(Activity, ActivityAdmin)
 admin.site.register(Profession, ProfessionAdmin)
+admin.site.register(Sponsor)
 admin.site.register(Attendee, AttendeeAdmin)
 admin.site.register(AttendeeType)
 admin.site.register(AttendeePayment, AttendeePaymentAdmin)
