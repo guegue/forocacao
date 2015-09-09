@@ -28,7 +28,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # django-secure
 # ------------------------------------------------------------------------------
-INSTALLED_APPS += ("djangosecure", )
+INSTALLED_APPS += ("djangosecure", "raven.contrib.django.raven_compat",)
 
 SECURITY_MIDDLEWARE = (
     'djangosecure.middleware.SecurityMiddleware',
@@ -138,3 +138,12 @@ CACHES = {
 
 
 # Your production stuff: Below this line define 3rd party library settings
+# SENTRY CONFIGURATION
+# ------------------------------------------------------------------------------
+# See: http://raven.readthedocs.org/en/latest/integrations/django.html
+RAVEN_CONFIG = {
+    'dsn': env("SENTRY_DSN"),
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    #'release': raven.fetch_git_sha(os.path.dirname(__file__)),
+}
