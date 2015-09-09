@@ -27,7 +27,7 @@ class UserBadgeJPEG(LoginRequiredMixin, DetailView):
 
         match = {
                 'event': event.name,
-                'name': "%s %s" % (participant.first_name, participant.last_name ),
+                'name': "%s %s" % (participant.first_name.partition(' ')[0], participant.last_name.partition(' ')[0] ),
                 'first_name': participant.first_name,
                 'last_name': participant.last_name,
                 'profession': participant.profession,
