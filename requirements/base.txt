@@ -45,3 +45,4 @@ django-filer
 django-countries
 django-smart-selects
 git+git://github.com/jaredly/django-colorfield#egg=django-colorfield
+git+git://github.com/javierwilson/django-model-report.git#egg=django-model-report

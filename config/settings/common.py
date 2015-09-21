@@ -47,6 +47,7 @@ THIRD_PARTY_APPS = (
     'django_countries',
     'smart_selects',
     'colorfield',
+    'model_report',
 )
 
 # Apps specific for this project go here.
