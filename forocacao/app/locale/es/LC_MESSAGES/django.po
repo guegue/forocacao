@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-05 09:57-0600\n"
+"POT-Creation-Date: 2015-09-21 21:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -148,7 +148,7 @@ msgstr "Organización"
 msgid "Position"
 msgstr "Cargo"
 
-#: models.py:60 models.py:132 models.py:218
+#: models.py:60 models.py:132 models.py:218 reports.py:33
 msgid "Profession"
 msgstr "Profesión"
 
@@ -300,7 +300,7 @@ msgstr "Nombre"
 msgid "Last name"
 msgstr "Apellido"
 
-#: models.py:218
+#: models.py:218 reports.py:32
 msgid "Type"
 msgstr "Tipo"
 
@@ -367,6 +367,10 @@ msgstr "Precio Precongreso"
 #: models.py:331
 msgid "Total Price"
 msgstr "Precio Total"
+
+#: reports.py:11
+msgid "Listado de participantes"
+msgstr ""
 
 msgid "Other Profession"
 msgstr "Otra Profesión"

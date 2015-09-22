@@ -54,6 +54,7 @@ node_modules/
 
 # virtual environments
 .env
+env
 
 # shell stuff
 .bash*
@@ -71,3 +72,6 @@ migrations
 *.sh
 .lesshst
 .gitconfig
+
+# static files
+staticfiles

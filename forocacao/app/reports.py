@@ -2,13 +2,14 @@
 
 from django.utils.translation import ugettext as _
 
+from braces.views import LoginRequiredMixin
 from model_report.report import reports, ReportAdmin
 from model_report.utils import yesno_format
 
 from .models import *
 
 
-class AttendeeReport(ReportAdmin):
+class AttendeeReport(LoginRequiredMixin, ReportAdmin):
     title = _('Listado de participantes')
     model = Attendee
     fields = [
