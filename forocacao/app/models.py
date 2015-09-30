@@ -184,7 +184,7 @@ class AttendeeReceipt(models.Model):
 
 
 class AttendeePayment(models.Model):
-    attendee = models.ForeignKey('users.User', verbose_name=_('Attendee'), related_name='payments')
+    attendee = models.ForeignKey('Attendee', verbose_name=_('Attendee'), related_name='payments')
     payment_method = models.ForeignKey('PaymentMethod', verbose_name=_('Payment Method'))
     date = models.DateField(default=date.today, verbose_name=_('Date'))
     amount = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=_('Amount'))
@@ -331,7 +331,7 @@ class Attendee(User):
     total_price.short_description = _("Total Price")
 
     def price(self):
-        # return event_price + extra_price
+        # return event_price (if main) + extra_price (if extra)
         if not self.type or not self.event:
             return 'no type or event'
         try:

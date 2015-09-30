@@ -10,6 +10,70 @@ from model_report.utils import yesno_format
 from .models import *
 
 
+class PaymentReport(LoginRequiredMixin, ReportAdmin):
+    title = _('Reporte Pagos')
+    model = AttendeePayment
+    fields = [
+        'attendee_id',
+        'attendee__first_name',
+        'attendee__middle_name',
+        'attendee__last_name',
+        'attendee__second_lastname',
+        'attendee__profession__name',
+        'attendee__other_profession',
+        'attendee__country',
+        'date',
+        'reference',
+        'payment_method__name',
+        'amount',
+    ]
+    override_field_labels = { 
+            'payment_method__name': _('Payment Method'),
+            }
+    #list_group_by = ('attendee_id',)
+    list_filter = ('attendee__event', 'attendee_id',)
+    list_order_by = ('attendee__first_name', 'attendee__last_name')
+    exclude = {'field': 'attendee__is_staff', 'value': True}
+
+    type = 'report'
+
+class AccountingReport(LoginRequiredMixin, ReportAdmin):
+    title = _('Reporte Contable')
+    model = Attendee
+    fields = [
+        'id',
+        'first_name',
+        'middle_name',
+        'last_name',
+        'second_lastname',
+        'profession__name',
+        'other_profession',
+        'country',
+        'self.price',
+        'self.paid',
+        'self.balance',
+    ]
+
+    #inlines = [PaymentReport]
+
+    override_field_labels = { 
+            'self.price': _('Price'),
+            'self.paid': _('Paid'),
+            'self.balance': _('Balance'),
+            'profession__name': _('Profession'),
+            }
+    override_field_formats = {
+        'extra': yesno_format,
+        'main': yesno_format,
+        'sponsored': yesno_format,
+    }
+    list_order_by = ('first_name', 'last_name')
+    #list_order_by = ('id', )
+    list_filter = ('event',)
+    exclude = {'field': 'is_staff', 'value': True}
+
+    type = 'report'
+
 class AttendeeReport(LoginRequiredMixin, ReportAdmin):
     title = _('Listado de participantes')
     model = Attendee
@@ -46,3 +110,5 @@ class AttendeeReport(LoginRequiredMixin, ReportAdmin):
     type = 'report'
 
 reports.register('attendee-report', AttendeeReport)
+reports.register('accounting-report', AccountingReport)
+reports.register('payment-report', PaymentReport)
