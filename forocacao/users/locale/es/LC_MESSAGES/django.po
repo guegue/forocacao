@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-01 01:30-0600\n"
+"POT-Creation-Date: 2015-09-29 07:14-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,83 +30,94 @@ msgid "Last name"
 msgstr "Apellido"
 
 #: models.py:20
+msgid "Middle name"
+msgstr "Segundo nombre"
+
+#: models.py:21
+msgid "Second lastname"
+msgstr "Segundo apellido"
+
+#: models.py:22
 msgid "Event"
 msgstr "Evento"
 
-#: models.py:21
+#: models.py:23
 msgid "Profession"
 msgstr "Profesión"
 
-#: models.py:22
+#: models.py:24
 msgid "Other Profession"
 msgstr "Otra Profesión"
 
-#: models.py:23
+#: models.py:25
 msgid "Phone"
 msgstr "Teléfono"
 
-#: models.py:24
+#: models.py:26
 msgid "Extra Activity"
 msgstr "Precongreso"
 
-#: models.py:25
+#: models.py:27
 msgid "Main Activity"
 msgstr "Participación en Congreso"
 
-#: models.py:26
+#: models.py:28
 msgid "Country"
 msgstr "País"
 
-#: models.py:27
-msgid "Nationality"
-msgstr "Nacionalidad"
-
-#: models.py:28
+#: models.py:30
 msgid "Soponsored"
 msgstr "Patrocinado"
 
-#: models.py:29
+#: models.py:31
 msgid "Sponsor"
 msgstr "Patrocinador"
 
-#: models.py:33
+#: models.py:36
 msgid "Type"
 msgstr "Tipo"
 
-#: models.py:35
+#: models.py:38
 msgid "Photo"
 msgstr "Foto"
 
-#: models.py:37
+#: models.py:39
+msgid "Impreso"
+msgstr ""
+
+#: models.py:41
 msgid "Biography"
 msgstr "Biografía"
 
-#: models.py:39
+#: models.py:43
 msgid "Activity"
 msgstr "Actividad"
 
-#: models.py:42
+#: models.py:46
 msgid "Attendee"
 msgstr "Participante"
 
-#: models.py:43
+#: models.py:47
 msgid "Attendees"
 msgstr "Participantes"
 
-#~ msgid "Name of User"
-#~ msgstr "Nombre completo"
+msgid "Nationality"
+msgstr "Nacionalidad"
 
-#~ msgid "Age"
-#~ msgstr "Edad"
+msgid "Name of User"
+msgstr "Nombre completo"
 
-#~ msgid "Document"
-#~ msgstr "Documento"
+msgid "Age"
+msgstr "Edad"
 
-#~ msgid "Speaker"
-#~ msgstr "Ponente"
+msgid "Document"
+msgstr "Documento"
 
-#~ msgid "Oganizer"
-#~ msgstr "Organizador"
+msgid "Speaker"
+msgstr "Ponente"
 
-#~ msgid "Special"
-#~ msgstr "Especial"
+msgid "Oganizer"
+msgstr "Organizador"
+
+msgid "Special"
+msgstr "Especial"

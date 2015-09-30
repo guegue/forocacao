@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from django.db.models import Q
 from django.utils.translation import ugettext as _
 
 from braces.views import LoginRequiredMixin
@@ -38,8 +39,9 @@ class AttendeeReport(LoginRequiredMixin, ReportAdmin):
         'main': yesno_format,
         'sponsored': yesno_format,
     }
-    list_order_by = ('last_name', 'first_name')
+    list_order_by = ('first_name', 'last_name')
     list_filter = ('event',)
+    exclude = {'field': 'is_staff', 'value': True}
 
     type = 'report'
 

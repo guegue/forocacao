@@ -80,7 +80,7 @@ class AttendeePaymentAdmin(admin.ModelAdmin):
 
 class AttendeeAdmin(admin.ModelAdmin):
 
-    list_display = ['id','first_name','last_name','email','price','paid','balance']
+    list_display = ['id','first_name','last_name','email','profession','other_profession','country','price','paid','balance']
     readonly_fields = ('balance', 'event_price_', 'extra_price', 'total_price', 'paid')
 
     def my_url_field(self, obj):
@@ -95,10 +95,10 @@ class AttendeeAdmin(admin.ModelAdmin):
         AttendeePaymentInline,
     ]
 
-
+    list_per_page = 500
     fieldsets = (
         (None, {
-            'fields': ('event','type','extra','main','event_price_','extra_price','total_price','paid','balance','first_name', 'last_name', 'email', 'profession', 'other_profession',
+            'fields': ('event','type','extra','main','event_price_','extra_price','total_price','paid','balance','first_name', 'middle_name', 'last_name', 'second_lastname', 'email', 'profession', 'other_profession',
             'phone','country','sponsored','sponsor','photo','printed')
         }),
         ('Informacion de actividades y biografia', {

@@ -93,7 +93,7 @@ INSTALLED_APPS += ("gunicorn", )
 
 # Static Assests
 # ------------------------
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 
 # EMAIL

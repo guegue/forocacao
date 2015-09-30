@@ -17,6 +17,8 @@ from smart_selects.db_fields import ChainedForeignKey
 class User(AbstractUser):
 
     #name = models.CharField(_("Name of User"), blank=True, max_length=255)
+    middle_name = models.CharField(max_length=30, verbose_name=_('Middle name'), null=True, blank=True)
+    second_lastname = models.CharField(max_length=30, verbose_name=_('Second lastname'), null=True, blank=True)
     event = models.ForeignKey('app.Event', null=True, verbose_name=_('Event'))
     profession = models.ForeignKey('app.Profession', verbose_name=_('Profession'),blank=True,null=True)
     other_profession = models.CharField(max_length=250, verbose_name=_('Other Profession'),blank=True,null=True)
