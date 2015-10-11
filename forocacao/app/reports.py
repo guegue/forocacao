@@ -21,7 +21,8 @@ class PaymentReport(LoginRequiredMixin, ReportAdmin):
         'attendee__second_lastname',
         'attendee__profession__name',
         'attendee__other_profession',
-        'attendee__country',
+        #'attendee__country__name', # FIXME: 'NoneType' object has no attribute 'to'
+        #'attendee__country', # FIXME: no subreport :(
         'date',
         'reference',
         'payment_method__name',
@@ -54,7 +55,7 @@ class AccountingReport(LoginRequiredMixin, ReportAdmin):
         'self.balance',
     ]
 
-    #inlines = [PaymentReport]
+    inlines = [PaymentReport]
 
     override_field_labels = { 
             'self.price': _('Price'),
