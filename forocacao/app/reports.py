@@ -92,6 +92,7 @@ class AttendeeReport(LoginRequiredMixin, ReportAdmin):
         'country',
         'sponsored',
         'sponsor__name',
+        'self.balance',
     ]
 
     override_field_labels = { 
@@ -107,6 +108,7 @@ class AttendeeReport(LoginRequiredMixin, ReportAdmin):
     list_order_by = ('first_name', 'last_name')
     list_filter = ('event',)
     exclude = {'field': 'is_staff', 'value': True}
+    selectable_fields = True
 
     type = 'report'
 
