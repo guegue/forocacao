@@ -189,7 +189,7 @@ class AttendeePayment(models.Model):
     date = models.DateField(default=date.today, verbose_name=_('Date'))
     amount = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=_('Amount'))
     reference = models.CharField(max_length=20, verbose_name=_('Reference'))
-    note = models.CharField(max_length=200, null=True, blank=True, verbose_name=_('Note'))
+    note = models.CharField(max_length=200, null=True, blank=True, verbose_name=_('Anticipo'))
 
     class Meta:
         ordering = ['-date']
