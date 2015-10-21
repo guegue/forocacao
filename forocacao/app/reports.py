@@ -11,9 +11,11 @@ from .models import *
 
 
 class PaymentReport(LoginRequiredMixin, ReportAdmin):
-    title = _('Reporte Pagos')
+    title = _('Reporte de Pagos')
     model = AttendeePayment
     fields = [
+        'date',
+        'payment_method__name',
         'attendee_id',
         'attendee__first_name',
         'attendee__middle_name',
@@ -23,16 +25,15 @@ class PaymentReport(LoginRequiredMixin, ReportAdmin):
         'attendee__other_profession',
         #'attendee__country__name', # FIXME: 'NoneType' object has no attribute 'to'
         #'attendee__country', # FIXME: no subreport :(
-        'date',
-        'reference',
-        'payment_method__name',
         'amount',
+        'reference',
+        'note',
     ]
     override_field_labels = { 
             'payment_method__name': _('Payment Method'),
             }
     #list_group_by = ('attendee_id',)
-    list_filter = ('attendee__event', 'attendee_id',)
+    list_filter = ('attendee__event', 'attendee_id','attendee__country','attendee__profession','payment_method')
     list_order_by = ('attendee__first_name', 'attendee__last_name')
     exclude = {'field': 'attendee__is_staff', 'value': True}
 
@@ -47,6 +48,7 @@ class AccountingReport(LoginRequiredMixin, ReportAdmin):
         'middle_name',
         'last_name',
         'second_lastname',
+        'type__name',
         'profession__name',
         'other_profession',
         'country',
@@ -62,6 +64,7 @@ class AccountingReport(LoginRequiredMixin, ReportAdmin):
             'self.paid': _('Paid'),
             'self.balance': _('Balance'),
             'profession__name': _('Profession'),
+            'type__name': _('Tipo de participante'),
             }
     override_field_formats = {
         'extra': yesno_format,
@@ -70,7 +73,7 @@ class AccountingReport(LoginRequiredMixin, ReportAdmin):
     }
     list_order_by = ('first_name', 'last_name')
     #list_order_by = ('id', )
-    list_filter = ('event',)
+    list_filter = ('event','id','type','country','profession',)
     exclude = {'field': 'is_staff', 'value': True}
 
     type = 'report'
