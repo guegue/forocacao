@@ -99,6 +99,7 @@ class AttendeeReport(LoginRequiredMixin, ReportAdmin):
             'type__name': _('Type'),
             'profession__name': _('Profession'),
             'sponsor__name': _('Sponsor'),
+            'self.balance': _('Balance'),
             }
     override_field_formats = {
         'extra': yesno_format,
@@ -106,7 +107,7 @@ class AttendeeReport(LoginRequiredMixin, ReportAdmin):
         'sponsored': yesno_format,
     }
     list_order_by = ('first_name', 'last_name')
-    list_filter = ('event',)
+    list_filter = ('event','country','profession')
     exclude = {'field': 'is_staff', 'value': True}
     selectable_fields = True
 
