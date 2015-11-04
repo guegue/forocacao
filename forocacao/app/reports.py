@@ -31,6 +31,8 @@ class PaymentReport(LoginRequiredMixin, ReportAdmin):
     ]
     override_field_labels = { 
             'payment_method__name': _('Payment Method'),
+            'attendee_id': _('ID'),
+            'attendee__profession__name': _('Profession'),
             }
     #list_group_by = ('attendee_id',)
     list_filter = ('attendee__event', 'attendee_id','attendee__country','attendee__profession','payment_method')
@@ -60,11 +62,12 @@ class AccountingReport(LoginRequiredMixin, ReportAdmin):
     inlines = [PaymentReport]
 
     override_field_labels = { 
+            'id': _('ID'),
             'self.price': _('Price'),
             'self.paid': _('Paid'),
             'self.balance': _('Balance'),
             'profession__name': _('Profession'),
-            'type__name': _('Tipo de participante'),
+            'type__name': _('Type'),
             }
     override_field_formats = {
         'extra': yesno_format,
@@ -99,6 +102,7 @@ class AttendeeReport(LoginRequiredMixin, ReportAdmin):
     ]
 
     override_field_labels = { 
+            'id': _('ID'),
             'type__name': _('Type'),
             'profession__name': _('Profession'),
             'sponsor__name': _('Sponsor'),
