@@ -2,10 +2,12 @@
 
 from django.db.models import Q
 from django.utils.translation import ugettext as _
+from django.forms.extras.widgets import SelectDateWidget
 
 from braces.views import LoginRequiredMixin
 from model_report.report import reports, ReportAdmin
 from model_report.utils import yesno_format
+from model_report.widgets import RangeWidget
 
 from .models import *
 
@@ -35,9 +37,10 @@ class PaymentReport(LoginRequiredMixin, ReportAdmin):
             'attendee__profession__name': _('Profession'),
             }
     #list_group_by = ('attendee_id',)
-    list_filter = ('attendee__event', 'attendee_id','attendee__country','attendee__profession','payment_method')
+    list_filter = ('date', 'attendee__event', 'attendee_id', 'attendee__country','attendee__profession','payment_method')
     list_order_by = ('attendee__first_name', 'attendee__last_name')
     exclude = {'field': 'attendee__is_staff', 'value': True}
+
 
     type = 'report'
 
