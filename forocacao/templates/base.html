@@ -105,9 +105,11 @@
                                 <a href="{% url 'account_login' %}" class="btn btn-default btn-lg"><i class="fa fa-sign-in"></i> <span class="network-name">{% trans "Ingresar" %}</span></a>
                             </li>
             {% endif %}
+            {% if event %}
                             <li>
                             <a href="{% url 'app:activities' event.slug %}" class="btn btn-default btn-lg"><i class="fa fa-info-circle"></i> <span class="network-name">{{ event.activities_label }}</span></a>
                             </li>
+            {% endif %}
                         </ul>
                     </div>
                 </div>
@@ -193,9 +195,11 @@
                                 <a href="{% url 'account_login' %}" class="btn btn-default btn-lg"><i class="fa fa-sign-in"></i> <span class="network-name">{% trans "Ingresar" %}</span></a>
                             </li>
             {% endif %}
+            {% if event %}
                             <li>
                             <a href="{% url 'app:activities' event.slug %}" class="btn btn-default btn-lg"><i class="fa fa-info-circle"></i> <span class="network-name">{{ event.activities_label }}</span></a>
                             </li>
+            {% endif %}
                     </ul>
                 </div>
             </div>
@@ -216,6 +220,7 @@
 			    <a href="{% url 'app:home' %}">Inicio</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
+            {% if event %}
                         <li>
                             <a href="{% url 'app:about' event.slug %}">Acerca de...</a>
                         </li>
@@ -227,6 +232,7 @@
                         <li>
                             <a href="{% url 'app:contact' event.slug %}">Contacto</a>
                         </li>
+            {% endif %}
                     </ul>
                     <p class="copyright text-muted small">Copyright &copy; {{event.organizer }} 2015. All Rights Reserved</p>
                 </div>
