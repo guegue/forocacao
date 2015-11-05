@@ -115,7 +115,7 @@ class AttendeeReport(LoginRequiredMixin, ReportAdmin):
         'sponsored': yesno_format,
     }
     list_order_by = ('first_name', 'last_name')
-    list_filter = ('event','country','profession')
+    list_filter = ('id','event','country','profession')
     exclude = {'field': 'is_staff', 'value': True}
     selectable_fields = True
 
