@@ -75,3 +75,8 @@ migrations
 
 # static files
 staticfiles
+
+# extras
+*.tar.gz
+*.sql
+*.sql.gz
