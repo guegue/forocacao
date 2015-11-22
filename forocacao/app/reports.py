@@ -29,7 +29,7 @@ class PaymentReport(LoginRequiredMixin, ReportAdmin):
         'reference',
         'note',
     ]
-    override_field_labels = { 
+    override_field_labels = {
             'payment_method__name': _('Payment Method'),
             'attendee__id': _('ID'),
             'attendee__profession__name': _('Profession'),
@@ -62,7 +62,7 @@ class AccountingReport(LoginRequiredMixin, ReportAdmin):
 
     inlines = [PaymentReport]
 
-    override_field_labels = { 
+    override_field_labels = {
             'id': _('ID'),
             'self.price': _('Price'),
             'self.paid': _('Paid'),
@@ -102,7 +102,7 @@ class AttendeeReport(LoginRequiredMixin, ReportAdmin):
         'self.balance',
     ]
 
-    override_field_labels = { 
+    override_field_labels = {
             'id': _('ID'),
             'type__name': _('Type'),
             'profession__name': _('Profession'),
@@ -115,7 +115,7 @@ class AttendeeReport(LoginRequiredMixin, ReportAdmin):
         'sponsored': yesno_format,
     }
     list_order_by = ('first_name', 'last_name')
-    list_filter = ('id','event','country','profession')
+    list_filter = ('id','event','country','profession','date_joined')
     exclude = {'field': 'is_staff', 'value': True}
     selectable_fields = True
 
