@@ -8,6 +8,7 @@ from django.contrib import admin
 from django.views.generic import TemplateView, DetailView
 
 from .views import HomeView, ActivitiesView, AttendeeDetailView, AttendeeBadgeView, AttendeeJPEGView, AttendeeReceiptView, AttendeeMarkTrue, ContentView, event
+from .models import *
 
 from model_report import report
 report.autodiscover()
@@ -22,6 +23,7 @@ urlpatterns = [
     url(r'^(?P<slug>[\w-]+)/services/$', ContentView.as_view(page='services'), name='services'),
     url(r'^(?P<slug>[\w-]+)/contact/$', ContentView.as_view(page='contact'), name='contact'),
     url(r'^(?P<slug>[\w-]+)/activities/$', ActivitiesView.as_view(), name='activities'),
+    url(r'^(?P<slug>[\w-]+)/activities/(?P<pk>\d+)/$', DetailView.as_view(model=Activity), name='activity'),
 
     # attendees' pages
     url(r'^attendee/(?P<username>[\w.@+-]+)/$',AttendeeDetailView.as_view(), name='detail'),

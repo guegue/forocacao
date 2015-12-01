@@ -10,8 +10,8 @@
 <h1>{{ event.activities_label }}</h1>
 <div>
 {% for object in object_list %}
-    <div class="col-md-5 clearfix">
-        <h3>{{ object.name }}</h3>
+    <div class="col-md-offset-1 col-md-5 clearfix">
+        <h3><a href="/{{ event.slug }}/activities/{{ object.id }}/">{{ object.name }}</a></h3>
         {% if object.organizer %}
             <div class="organizador">Organizado por: {{ object.organizer }}
             {% if object.organizer.photo %}
@@ -23,7 +23,7 @@
             {% if object.image %}
                 <img src="{% thumbnail object.image 550x250 crop %}" class="img-responsive"/>
             {% endif %}
-            {{ object.text|linebreaks }}
+            {{ object.text|truncatewords:40 }}
         </div>
         <div class="clearfix"></div>
     </div>
