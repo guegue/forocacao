@@ -37,5 +37,5 @@
 .contenido { font-size: 14px;}
 h3 { color: #006196;font-size: 18px;}
 .separador {display: block;height: 1px; border: 0; border-top: 1px solid #C2EAFF; margin: 1em 0;  padding: 0;  }
-h2 { color: #999;font-size: 23px;}
+h2 { color: #fff!important;font-size: 23px;}
 h4 { color: #242424;font-size: 15px;}
