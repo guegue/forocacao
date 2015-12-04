@@ -77,7 +77,7 @@ class AccountingReport(LoginRequiredMixin, ReportAdmin):
     }
     list_order_by = ('first_name', 'last_name')
     #list_order_by = ('id', )
-    list_filter = ('event','id','type','country','profession',)
+    list_filter = ('event', 'id', 'type', 'country', 'profession', 'payments__date')
     exclude = {'field': 'is_staff', 'value': True}
 
     type = 'report'
