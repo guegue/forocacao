@@ -2,7 +2,10 @@
 
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from django_countries.fields import CountryField
+
+from django_countries.fields import CountryField, LazyTypedChoiceField
+from django_countries import countries
+
 from .models import User
 from forocacao.app.models import * 
 
@@ -11,11 +14,11 @@ class SignupForm(forms.Form):
     first_name = forms.CharField(max_length=30, label=_('First name'))
     last_name = forms.CharField(max_length=30, label=_('Last name'))
     second_lastname = forms.CharField(max_length=30, label=_('Second Last name'),required=False)
-    country = forms.CharField(max_length=2,label=_('Country'))
+    country = LazyTypedChoiceField(choices=countries)
     profession = forms.ModelChoiceField(queryset=Profession.objects.all(),label=_('Profession'))
     phone = forms.CharField(max_length=50, label=_('Phone'),required=False)
-    sponsored = forms.BooleanField(label=_('Soponsored'),required=False)
-    sponsor = forms.ModelChoiceField(queryset=Sponsor.objects.all(),label=_('Soponsor'))
+    sponsored = forms.BooleanField(label=_('Sponsored'),required=False)
+    sponsor = forms.ModelChoiceField(queryset=Sponsor.objects.all(),label=_('Sponsor'))
 
     def signup(self, request, user):
         user.first_name = self.cleaned_data['first_name']
