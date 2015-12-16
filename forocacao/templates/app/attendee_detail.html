@@ -60,13 +60,9 @@
             <tr><td colspan="2" class="active"><h3>Información de pago</h3></td></tr>
             <tr><td>En concepto de:</td><td>{% if object.main %}Asistencia al congreso {% endif %} {% if object.main and object.extra%} y {% endif %}{% if object.extra%}Asistencia al precongreso{% endif %}</td></tr>
             {% if object.balance == 0 %}<tr><td>Fecha de cancelación:</td><td>{{object.payments.last.date}}</td></tr>{% endif %}
-            {% if object.balance == 0 %}
-                <tr class="danger"><td>Total cancelado:</td><td>{{object.paid}}</td></tr>
-            {% else %}
-                <tr><td>Costo de inscripción:</td><td>{{object.total_price }}</td></tr>
-                <tr><td>Monto abonado:</td><td>{{object.paid }}</td></tr>
-                <tr class="danger"><td><strong>Saldo:</strong></td><td><strong>{{object.balance }}</strong></td></tr>
-            {% endif %}
+            <tr><td>Costo de inscripción:</td><td>{{object.total_price }}</td></tr>
+            <tr><td>Monto abonado:</td><td>{{object.paid }}</td></tr>
+            <tr class="danger"><td><strong>Saldo:</strong></td><td><strong>{{object.balance }}</strong></td></tr>
             <tr><td>Detalle de pagos realizados:</td><td> 
                 {% if object.payments.all %}
                     <ul>
