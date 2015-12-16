@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-29 07:14-0600\n"
+"POT-Creation-Date: 2015-12-04 14:02-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,37 +21,49 @@ msgstr ""
 msgid "Users"
 msgstr "Usuarios"
 
-#: forms.py:7
+#: forms.py:13 models.py:37
+msgid "Type"
+msgstr "Tipo"
+
+#: forms.py:14
 msgid "First name"
 msgstr "Nombre"
 
-#: forms.py:8
+#: forms.py:15
 msgid "Last name"
 msgstr "Apellido"
+
+#: forms.py:16 models.py:21
+msgid "Second last name"
+msgstr "Segundo apellido"
+
+#: forms.py:18 models.py:23
+msgid "Profession"
+msgstr "Profesión"
+
+#: forms.py:19 models.py:25
+msgid "Phone"
+msgstr "Teléfono"
+
+#: forms.py:20 models.py:30
+msgid "Sponsored"
+msgstr "Patrocinado"
+
+#: forms.py:21 models.py:31
+msgid "Sponsor"
+msgstr "Patrocinador"
 
 #: models.py:20
 msgid "Middle name"
 msgstr "Segundo nombre"
 
-#: models.py:21
-msgid "Second lastname"
-msgstr "Segundo apellido"
-
 #: models.py:22
 msgid "Event"
 msgstr "Evento"
 
-#: models.py:23
-msgid "Profession"
-msgstr "Profesión"
-
 #: models.py:24
 msgid "Other Profession"
 msgstr "Otra Profesión"
-
-#: models.py:25
-msgid "Phone"
-msgstr "Teléfono"
 
 #: models.py:26
 msgid "Extra Activity"
@@ -65,39 +77,27 @@ msgstr "Participación en Congreso"
 msgid "Country"
 msgstr "País"
 
-#: models.py:30
-msgid "Soponsored"
-msgstr "Patrocinado"
-
-#: models.py:31
-msgid "Sponsor"
-msgstr "Patrocinador"
-
-#: models.py:36
-msgid "Type"
-msgstr "Tipo"
-
-#: models.py:38
+#: models.py:39
 msgid "Photo"
 msgstr "Foto"
 
-#: models.py:39
+#: models.py:40
 msgid "Impreso"
 msgstr ""
 
-#: models.py:41
+#: models.py:42
 msgid "Biography"
 msgstr "Biografía"
 
-#: models.py:43
+#: models.py:44
 msgid "Activity"
 msgstr "Actividad"
 
-#: models.py:46
+#: models.py:47
 msgid "Attendee"
 msgstr "Participante"
 
-#: models.py:47
+#: models.py:48
 msgid "Attendees"
 msgstr "Participantes"
 
