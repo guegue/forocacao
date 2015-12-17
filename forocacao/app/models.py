@@ -315,7 +315,7 @@ class Attendee(User):
 
     def extra_price(self):
         if not self.type or not self.event:
-            return 'no type or event'
+            return 0
         try:
             if self.extra:
                 price = self.event.attendeetypeevent_set.get(attendeetype=self.type).extra_price
