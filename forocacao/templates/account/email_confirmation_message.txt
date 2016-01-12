@@ -1,0 +1,8 @@
+{% load account %}{% user_display user as user_display %}{% load i18n %}{% autoescape off %}{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Hola desde {{ site_name }}!
+
+Usted esta recibiendo este mensaje por que el usuario "{{ user_display }}" en {{ site_domain }} ha facilitado esta dirección de correo como una dirección que podrá ser utilizada para conectar su cuenta.
+
+Para confirmar que esto es correcto, vaya a {{ activate_url }}
+{% endblocktrans %}{% endautoescape %}
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Muchas gracias {{ site_name }}!
+{{ site_domain }}{% endblocktrans %}
