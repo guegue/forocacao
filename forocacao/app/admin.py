@@ -35,7 +35,7 @@ class AttendeePaymentInline(admin.TabularInline):
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == "payment_method":
-            if self.parent_obj:
+            if self.parent_obj and self.parent_obj.event:
                 kwargs["queryset"] = PaymentMethod.objects.filter(id__in=self.parent_obj.event.payment_methods.all())
             if not request.user.is_superuser:
                 kwargs["queryset"] = PaymentMethod.objects.filter(id__in=request.user.event.payment_methods.all())
@@ -130,7 +130,7 @@ class AttendeeAdmin(admin.ModelAdmin):
         form.base_fields['username'].required = False
 
         # if update, limit type and profession to current event
-        if obj:
+        if obj and obj.event:
             form.base_fields['profession'].queryset = Profession.objects.filter(id__in=obj.event.professions.all())
             form.base_fields['sponsor'].queryset = Sponsor.objects.filter(id__in=obj.event.sponsors.all())
             form.base_fields['activities'].queryset = Activity.objects.filter(id__in=obj.event.activities.all())
