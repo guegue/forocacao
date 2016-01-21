@@ -26,6 +26,7 @@ class SignupForm(forms.Form):
         user.second_lastname = self.cleaned_data['second_lastname']
         user.phone = self.cleaned_data['phone']
         user.country = self.cleaned_data['country']
+        user.profession = self.cleaned_data['profession']
         user.type = self.cleaned_data['type']
         user.sponsored = self.cleaned_data['sponsored']
         user.sponsor = self.cleaned_data['sponsor']
