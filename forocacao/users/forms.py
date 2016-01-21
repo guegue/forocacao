@@ -19,7 +19,7 @@ class SignupForm(forms.Form):
     profession = forms.ModelChoiceField(queryset=Profession.objects.filter(id__in=current_event.professions.all()),label=_('Profession'))
     phone = forms.CharField(max_length=50, label=_('Phone'),required=False)
     sponsored = forms.BooleanField(label=_('Sponsored'),required=False)
-    sponsor = forms.ModelChoiceField(queryset=Sponsor.objects.all(),label=_('Sponsor'), required=False)
+    sponsor = forms.ModelChoiceField(queryset=Sponsor.objects.filter(id__in=current_event.sponsors.all()),label=_('Sponsor'), required=False)
 
     def signup(self, request, user):
         user.first_name = self.cleaned_data['first_name']
