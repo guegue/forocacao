@@ -14,37 +14,44 @@
 <div class="container internal" id="printableArea">
   <div class="row">
     <div class="col-sm-10">
-
-    {% if object.event.logo %}
-        <img src="{% thumbnail object.event.logo 100x100 crop %}" />
-    {% endif %}
-      <div class="col-md-6">
-          <h1>Recibo oficial de caja</h1>
+      <div class="col-md-12">
+      {% if event.logo %}
+         <div class="pull-left">
+             <img src="{% thumbnail event.logo 220x150 %}" style="margin-right: 20px;"/>
+         </div>
+      {% endif %}
+      <h3 class="event">{{ event }}</h3>
       </div>
       <div class="col-md-6">
-        <div class="pull-right">Fecha: {{ object.date }}</div>
+          <h2>Recibo oficial de caja </h2>
+      </div>
+      <div class="col-md-6">
+        <div class="pull-right fecha">Fecha: {{ object.date }}</div>
       </div>
       <br clear="all" />
       <div class="contanido">
-	  <table class="table table-striped" width="75%">
-              <tr><td colspan=2 class="text-right">Recibo #: </td><td>{{ object.id }}</td></tr>
-              <tr><td>Recibimos de: </td><td>{{ object.attendee.full_name }} participante #{{ object.attendee.id }}</td></tr>
-              <tr><td nowrap>La cantidad de: </td><td>${{ object.attendee.price }}</td></tr>
-              <tr><td nowrap>En concepto de:</td><td>Cancelación por {% if object.attendee.main %}asistencia al congreso {% endif %} {% if object.attendee.main and object.attendee.extra%} y {% endif %}{% if object.attendee.extra%}asistencia al precongreso{% endif %} "{{ object.attendee.event }}" y participación como "{{ object.attendee.type}}"</td></tr>
-              {% if object.name %}<tr><td>{{ object.name }}</td></tr>{% endif %}
-              <tr><td colspan=2 class="text-left">Detalle de pagos realizados:</td></tr>
-	      <tr><td colspan=2">
-            	<ul>
-                {% for row in object.attendee.payments.all %}
-                <li>{{ row.date }}: {{ row.payment_method }}: {{ row.amount}} {% if row.note %}{{ row.note }}{% endif %}</li>
-                {% endfor %}
-                </ul>
+	    <table class="table table-striped" width="75%">
+          <tr><td colspan=2 class="text-right">Recibo # {{ object.id }}</td></tr>
+          <tr><td>Recibimos de: </td><td>{{ object.attendee.full_name }} participante #{{ object.attendee.id }}</td></tr>
+          <tr class="warning"><td nowrap><strong>La cantidad de: </strong></td><td><strong>U$ {{ object.attendee.price|safe }}</strong></td></tr>
+          <tr><td nowrap>En concepto de:</td><td>Cancelación por {% if object.attendee.main %}asistencia al congreso {% endif %} {% if object.attendee.main and object.attendee.extra%} y {% endif %}{% if object.attendee.extra%}asistencia al precongreso{% endif %} "{{ object.attendee.event }}" y participación como "{{ object.attendee.type}}"</td></tr>
+          {% if object.name %}<tr><td>{{ object.name }}</td></tr>{% endif %}
+          <tr><td colspan=2 class="text-left">Detalle de pagos realizados:</td></tr>
+    	  <tr><td colspan=2" class="pagos">
+            <div class="col-md-offset-2 col-md-6">
+            <table class="table table-condensed">
+              <tr class="danger"><td>Fecha</td><td>Monto</td><td>Forma de pago</td></tr>
+              {% for row in object.attendee.payments.all %}
+                <tr><td>{{ row.date }}</td><td>U$ {{ row.amount|safe }}</td><td>{{ row.payment_method }}</td></tr>
+              {% endfor %}
+            </table>
+            </div>
 	      </td></tr>
-         </table>
-       </div>
-       <div style="margin-top: 120px;"></div>
-       <div class="col-md-3" style="border-top: 1px solid #000;margin-right:80px;">Recibi conforme</div>
-       <div class="col-md-3" style="border-top: 1px solid #000;">Entregue conforme</div>
+        </table>
+      </div>
+      <div style="margin-top: 120px;"></div>
+      <div class="col-md-3" style="border-top: 1px solid #000;margin-right:80px;">Recibi conforme</div>
+      <div class="col-md-3" style="border-top: 1px solid #000;">Entregue conforme</div>
     <div>
   </div>
 </div>
