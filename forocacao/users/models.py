@@ -22,7 +22,7 @@ class User(AbstractUser):
     event = models.ForeignKey('app.Event', null=True, verbose_name=_('Event'))
     profession = models.ForeignKey('app.Profession', verbose_name=_('Profession'),blank=True,null=True)
     other_profession = models.CharField(max_length=250, verbose_name=_('Other Profession'),blank=True,null=True)
-    phone = models.CharField(max_length=50, verbose_name=_('Phone'),blank=True,null=True)
+    phone = models.CharField(max_length=50, verbose_name=_('Phone'))
     extra = models.BooleanField(verbose_name=_('Extra Activity'), default=False)
     main = models.BooleanField(verbose_name=_('Main Activity'), default=True)
     country = CountryField(verbose_name=_('Country'))
@@ -30,7 +30,7 @@ class User(AbstractUser):
     sponsored = models.BooleanField(verbose_name=_('Sponsored'))
     sponsor = models.ForeignKey('app.Sponsor', verbose_name=_('Sponsor'),blank=True,null=True)
     #sponsor = models.ForeignKey('User', limit_choices_to = {'type': 3}, null=True, blank=True, verbose_name=_('Sponsor'))
-    #document = models.CharField(max_length=50, null=True, blank=True, verbose_name=_('Document'))
+    document = models.CharField(max_length=50, null=True, blank=True, verbose_name=_('ID Card'))
     #TYPE = Choices(('regular',_('Regular')), ('speaker', _('Speaker')), ('sponsor', _('Sponsor')), ('organizer',_('Oganizer')), ('special',_('Special')))
     #type = models.ForeignKey('app.AttendeeType', default='regular', verbose_name=_('Type'))
     #FIXME: null shouldn't be true, but sign-up is a pain
