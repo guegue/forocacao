@@ -15,9 +15,10 @@ class SignupForm(forms.Form):
     first_name = forms.CharField(max_length=30, label=_('First name'))
     last_name = forms.CharField(max_length=30, label=_('Last name'))
     second_lastname = forms.CharField(max_length=30, label=_('Second last name'),required=False)
+    document = forms.CharField(max_length=60, label=_('ID Card'),required=False)
     country = LazyTypedChoiceField(choices=countries, label=_('Country'))
     profession = forms.ModelChoiceField(queryset=Profession.objects.filter(id__in=current_event.professions.all()),label=_('Profession'))
-    phone = forms.CharField(max_length=50, label=_('Phone'),required=False)
+    phone = forms.CharField(max_length=50, label=_('Phone'),required=True)
     sponsored = forms.BooleanField(label=_('Sponsored'),required=False)
     sponsor = forms.ModelChoiceField(queryset=Sponsor.objects.filter(id__in=current_event.sponsors.all()),label=_('Sponsor'), required=False)
 
@@ -25,6 +26,7 @@ class SignupForm(forms.Form):
         user.first_name = self.cleaned_data['first_name']
         user.last_name = self.cleaned_data['last_name']
         user.second_lastname = self.cleaned_data['second_lastname']
+        user.document = self.cleaned_data['document']
         user.phone = self.cleaned_data['phone']
         user.country = self.cleaned_data['country']
         user.profession = self.cleaned_data['profession']
