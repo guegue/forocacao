@@ -99,7 +99,7 @@ INSTALLED_APPS += ("gunicorn", )
 # EMAIL
 # ------------------------------------------------------------------------------
 DEFAULT_FROM_EMAIL = env('DJANGO_DEFAULT_FROM_EMAIL',
-                         default='forocacao <noreply@forocacao.com>')
+                         default='Congreso Pediatria <congresos@schuvartours.com>')
 #EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
 EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
 #MAILGUN_ACCESS_KEY = env('DJANGO_MAILGUN_API_KEY')
@@ -147,3 +147,6 @@ RAVEN_CONFIG = {
     # release based on the git info.
     #'release': raven.fetch_git_sha(os.path.dirname(__file__)),
 }
+INSTALLED_APPS = INSTALLED_APPS + ('lockdown',)
+MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + ('lockdown.middleware.LockdownMiddleware',)
+LOCKDOWN_PASSWORDS = ('supersecret')
