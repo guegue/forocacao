@@ -1,7 +1,7 @@
 {% load i18n model_report %}
-<table class="table table-bordered">
+<table class="table table-condensed">
     <thead>
-        <tr>
+        <tr class="warning">
             {% for column_label in column_labels %}
                 <th valign="middle" class="info">{{ column_label }}</th>
             {% endfor %}
