@@ -7,3 +7,58 @@ h3 { color: #006196;font-size: 17px;}
 h2 { color: #999;font-size: 21px;}
 h4 { color: #242424;font-size: 15px;}
 .firma { margin-top:60px;text-align: center; border-top: 1px solid #000; width: 60%}
+.fecha { margin-top: 20px;}
+.event { font-size: 20px; }
+.pagos table tr td { border-top: 0px;border-bottom: 1px solid #ccc;}
+.pagos { font-size: 14px;}
+.precios { font-size: 16px;}
+.saldo { font-size: 17px;}
+thead th, tfoot td {
+    background-image: none !important;
+}
+.inline-report {
+    background: #fff;
+}
+.inline-report .table {
+    border: none !important;
+    margin-left: 36px!important;
+    width: 430px !important;
+    background: #fff;
+}
+.table-condensed > tbody > tr > td {
+    border-top: 1px solid #d8d8d8 !important;
+    border-bottom: 0px solid #d8d8d8 !important;
+    padding-top: 10px !important;
+    font-size: 13px;
+}
+.table-condensed > tbody > tr.inline-report > td { padding-top: 0px !important;border-top: 1px solid #fff !important; }
+.inline-report th.info {
+  background-color:transparent !important;
+  border: 0px !important;
+  border-bottom: 1px solid #C9C4C4 !important;
+}
+.inline-report .table > thead > tr.warning > th { 
+    background: transparent !important; 
+    font-style: italic;
+    color: #6E3E00;
+}
+.inline-report .row-resultados > td { border: 1px solid #fff !important;  }
+.inline-report .table-condensed > tbody > tr > td { padding-top: 0px !important;
+    color: #6E3E00;
+}
+.query, .excel, .pdf, .print {
+    color: #fff;
+    background-color: #337ab7;
+    border: 1px solid transparent;
+    border-color: #2e6da4;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-radius: 4px;
+}
+.form_filter { margin-bottom: 20px;}
