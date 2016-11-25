@@ -14,11 +14,14 @@
 <div class="container internal"  id="printableArea">
   <div class="row">
     <div class="col-sm-8">
-
-    {% if object.event.logo %}
-        <img src="{% thumbnail object.event.logo 100x100 %}" class="pull-left"/>
-    {% endif %}
-    <h2>{{ object.event }}</h2>
+      <div class="col-md-9">
+      {% if object.event.logo %}
+         <div class="pull-left">
+             <img src="{% thumbnail object.event.logo 220x150 %}" style="margin-right: 20px;"/>
+         </div>
+      {% endif %}
+      <h3 class="event">{{ object.event }}</h3>
+      </div>
     <div class="clear"></div>
     {% if object.name %}
       <p>{{ object.name }}</p>
@@ -60,20 +63,24 @@
             <tr><td colspan="2" class="active"><h3>Información de pago</h3></td></tr>
             <tr><td>En concepto de:</td><td>{% if object.main %}Asistencia al congreso {% endif %} {% if object.main and object.extra%} y {% endif %}{% if object.extra%}Asistencia al precongreso{% endif %}</td></tr>
             {% if object.balance == 0 %}<tr><td>Fecha de cancelación:</td><td>{{object.payments.last.date}}</td></tr>{% endif %}
-            <tr><td>Costo de inscripción:</td><td>{{object.total_price }}</td></tr>
-            <tr><td>Monto abonado:</td><td>{{object.paid }}</td></tr>
-            <tr class="danger"><td><strong>Saldo:</strong></td><td><strong>{{object.balance }}</strong></td></tr>
+            <tr><td>Costo de inscripción:</td><td>U$ {{object.total_price|safe }}</td></tr>
+            <tr><td>Monto abonado:</td><td>U$ {{object.paid|safe }}</td></tr>
+            <tr class="warning saldo"><td><strong>Saldo:</strong></td><td><strong>U$ {{object.balance|safe }}</strong></td></tr>
             <tr><td>Detalle de pagos realizados:</td><td> 
+    	    <tr><td colspan=2" class="pagos">
+              <div class="col-md-offset-1">
                 {% if object.payments.all %}
-                    <ul>
-                        {% for row in object.payments.all %}
-                        <li>{{ row.date }}: {{ row.amount}} -  {{ row.payment_method }} {% if row.note %}{{ row.note }}{% endif %}</li>
-                        {% endfor %}
-                    </ul>
+                  <table class="table table-condensed">
+                    <tr class="danger"><td>Fecha</td><td>Monto</td><td>Forma de pago</td></tr>
+                    {% for row in object.payments.all %}
+                      <tr><td>{{ row.date }}</td><td>U$ {{ row.amount|safe }}</td><td>{{ row.payment_method }}</td></tr>
+                    {% endfor %}
+                  </table>
                 {% else %}
                     <p>No hay pagos registrados de este participante</p>
                 {% endif %}
-            </td></tr>
+              </div>
+	        </td></tr>
         </table>
         <div class="separador2"></div>
         <div class="col-md-12"><div class="firma">Firma del participante</div></div>
