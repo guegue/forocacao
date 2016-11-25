@@ -80,7 +80,7 @@ class AttendeePaymentAdmin(admin.ModelAdmin):
 
 class AttendeeAdmin(admin.ModelAdmin):
 
-    list_display = ['id','first_name','last_name','email','profession','other_profession','country','price','paid','balance']
+    list_display = ['id','first_name','last_name','document','email','profession','other_profession','country','price','paid','balance']
     readonly_fields = ('balance', 'event_price_', 'extra_price', 'total_price', 'paid')
 
     def my_url_field(self, obj):
