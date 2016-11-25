@@ -1,0 +1,15 @@
+{% if render_report %}
+{% comment %}
+<tr class="inline-report">
+     <td colspan="{{ inline_column_span }}">
+        <strong>{{ report.get_title }}</strong>
+    </td>
+</tr>
+{% endcomment %}
+<tr class="inline-report">
+    <td colspan="{{ inline_column_span }}">
+        {% include "model_report/includes/report_table.html" %}
+    </td>
+</tr>
+{% endif %}
+
