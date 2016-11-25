@@ -6,3 +6,8 @@ Para confirmar que esto es correcto, vaya a {{ activate_url }}
 {% endblocktrans %}{% endautoescape %}
 {% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Muchas gracias {{ site_name }}!
 {{ site_domain }}{% endblocktrans %}
+
+Camino de Oriente, Módulo A1. Managua, Nicaragua
+USA (305) 396-6444
+(505) 2270-1010
+info@schuvartours.com
